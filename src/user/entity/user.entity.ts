@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, OneToMany } from 'typeorm';
 import { EntityObject } from '../../entityObject/entity/entityObject.entity';
+import { UserEntity } from 'src/user-entity/entity/user_entityObject.entity';
 
 @Entity("user")
 export class User {
@@ -30,6 +31,7 @@ export class User {
   })
   createdAt: Date;
 
-  @ManyToMany(() => EntityObject, (entity) => entity.users)
-  entitiesObject: EntityObject[];
+  @OneToMany(() => UserEntity, (userEntity) => userEntity.user)
+  userEntities: UserEntity[];
+
 }

@@ -61,7 +61,7 @@ export class UserService {
 
     // Update an existing user
     async updateUser(id: number, userUpdateDto: UserUpdateDto): Promise<ResponseApi<any>> {
-        await this.findOneUserVerificate(id);
+        const verification = await this.findOneUserVerificate(id);
         await this.userRepository.update(id, userUpdateDto);
         const updatedUser = await this.userRepository.findOne({ where: { id } });
         return new ResponseApi(
@@ -73,7 +73,7 @@ export class UserService {
 
     // Remove an existing user
     async removeUser(id: number): Promise<ResponseApi<null>> {
-        await this.findOneUserVerificate(id);
+        const verification = await this.findOneUserVerificate(id);
         await this.userRepository.delete(id);
         return new ResponseApi(
             HttpStatus.NO_CONTENT,
