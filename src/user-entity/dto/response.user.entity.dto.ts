@@ -1,5 +1,5 @@
-import { ResponseEntityDto } from "./response.entity.dto";
-import { ResponseUserDto } from "./response.user.dto";
+import { ResponseEntityDto } from "../../entityObject/dto/response.entity.dto";
+import { ResponseUserDto } from "../../user/dto/response.user.dto";
 
 export class ResponseUserEntityDto {
     id: number;
