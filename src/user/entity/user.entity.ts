@@ -24,9 +24,12 @@ export class User {
   @Column({ type: 'datetime' })
   lastLogin: Date;
 
-  @Column({ type: 'datetime' })
+  @Column({ 
+    update: true,
+    type: 'datetime' 
+  })
   createdAt: Date;
 
   @ManyToMany(() => EntityObject, (entity) => entity.users)
-  entities: EntityObject[];
+  entitiesObject: EntityObject[];
 }

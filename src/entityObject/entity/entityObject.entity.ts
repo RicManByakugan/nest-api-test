@@ -24,7 +24,7 @@ export class EntityObject {
   @Column({ type: 'datetime' })
   createdAt: Date;
 
-  @ManyToMany(() => User, (user) => user.entities)
+  @ManyToMany(() => User, (user) => user.entitiesObject)
   @JoinTable() 
   users: User[];
 }
