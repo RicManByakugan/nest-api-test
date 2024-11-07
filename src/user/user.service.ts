@@ -6,6 +6,7 @@ import { CreateUserDto } from './dto/create.user.dto';
 import { UpdateUserDto } from './dto/update.user.dto';
 import { ResponseApi } from 'src/shared/response/ResponseApi';
 import { ResponseUserDto } from './dto/response.user.dto';
+import { UpdateAllFieldUserDto } from './dto/update.all.user.dto';
 
 @Injectable()
 export class UserService {
@@ -65,6 +66,19 @@ export class UserService {
 
     // Update an existing user
     async updateUser(id: number, UpdateUserDto: UpdateUserDto): Promise<ResponseApi<any>> {
+        const verification = await this.findOneUserVerificate(id);
+        await this.userRepository.update(id, UpdateUserDto);
+        const updatedUser = await this.userRepository.findOne({ where: { id } });
+        const responseData = this.mapToUserResponseDto(updatedUser);
+        return new ResponseApi(
+            HttpStatus.OK,
+            'User updated successfully',
+            responseData
+        );
+    }
+
+    // Update an existing user
+    async updateUserAllField(id: number, UpdateUserDto: UpdateAllFieldUserDto): Promise<ResponseApi<any>> {
         const verification = await this.findOneUserVerificate(id);
         await this.userRepository.update(id, UpdateUserDto);
         const updatedUser = await this.userRepository.findOne({ where: { id } });
