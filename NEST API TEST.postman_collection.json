@@ -1,0 +1,688 @@
+{
+	"info": {
+		"_postman_id": "a875ed66-65d4-4112-a412-1557ceebc740",
+		"name": "NEST API TEST",
+		"description": "## Description\n\n## User API - Endpoints\n\n### Get All Users\n\n**Route**: `GET /user`  \n**Description**: Retrieves all users.  \n**Response**: `ResponseApi` - An array of `ResponseUserDto` objects wrapped in a `ResponseApi` object.\n\n### Create User\n\n**Route**: `POST /user/create`  \n**Description**: Creates a new user.  \n**Request Body**: `CreateUserDto` - DTO containing the data for the new user.  \n**Response**: `ResponseApi` - The created `ResponseUserDto` object wrapped in a `ResponseApi` object.\n\n### Update User\n\n**Route**: `PATCH /user/update/:id`  \n**Description**: Updates an existing user.  \n**Path Parameters**: `id` - The ID of the user to update.  \n**Request Body**: `UpdateUserDto` - DTO containing the updated data for the user.  \n**Response**: `ResponseApi` - The updated `User` object wrapped in a `ResponseApi` object.\n\n### Update All Fields of a User\n\n**Route**: `PUT /user/update-all-fields/:id`  \n**Description**: Updates all fields of an existing user.  \n**Path Parameters**: `id` - The ID of the user to update.  \n**Request Body**: `UpdateAllFieldUserDto` - DTO containing the updated data for the user.  \n**Response**: `ResponseApi` - The updated `User` object wrapped in a `ResponseApi` object.\n\n### Delete User\n\n**Route**: `DELETE /user/delete/:id`  \n**Description**: Deletes an existing user.  \n**Path Parameters**: `id` - The ID of the user to delete.  \n**Response**: `ResponseApi` - The deleted `User` object wrapped in a `ResponseApi` object.\n\n### Get User by ID\n\n**Route**: `GET /user/:id`  \n**Description**: Retrieves a user by its ID.  \n**Path Parameters**: `id` - The ID of the user to retrieve.  \n**Response**: `ResponseApi` - The `ResponseUserDto` object for the requested user, wrapped in a `ResponseApi` object.\n\n## Entity API - Endpoints\n\n### Get All Entities\n\n**Route**: `GET /entity`  \n**Description**: Retrieves all entities.  \n**Response**: `ResponseApi` - An array of `ResponseEntityDto` objects wrapped in a `ResponseApi` object.\n\n### Create Entity\n\n**Route**: `POST /entity/create`  \n**Description**: Creates a new entity.  \n**Request Body**: `CreateEntityObjectDto` - DTO containing the data for the new entity.  \n**Response**: `ResponseApi` - The created `ResponseEntityDto` object wrapped in a `ResponseApi` object.\n\n### Update Entity\n\n**Route**: `PATCH /entity/update/:id`  \n**Description**: Updates an existing entity.  \n**Path Parameters**: `id` - The ID of the entity to update.  \n**Request Body**: `UpdateEntityObjectDto` - DTO containing the updated data for the entity.  \n**Response**: `ResponseApi` - The updated `EntityObject` wrapped in a `ResponseApi` object.\n\n### Update All Fields in an Entity\n\n**Route**: `PUT /entity/update-all-fields/:id`  \n**Description**: Updates all fields of an existing entity.  \n**Path Parameters**: `id` - The ID of the entity to update.  \n**Request Body**: `UpdateEntityObjectDto` - DTO containing the updated data for the entity.  \n**Response**: `ResponseApi` - The updated `EntityObject` wrapped in a `ResponseApi` object.\n\n### Delete Entity\n\n**Route**: `DELETE /entity/delete/:id`  \n**Description**: Deletes an existing entity.  \n**Path Parameters**: `id` - The ID of the entity to delete.  \n**Response**: `ResponseApi` - The deleted `EntityObject` wrapped in a `ResponseApi` object.\n\n### Get Entity by ID\n\n**Route**: `GET /entity/:id`  \n**Description**: Retrieves an entity by its ID.  \n**Path Parameters**: `id` - The ID of the entity to retrieve.  \n**Response**: `ResponseApi` - The `ResponseEntityDto` object for the requested entity, wrapped in a `ResponseApi` object.\n\n## UserEntity API - Endpoints\n\n### Get All User Entities\n\n**Route**: `GET /user-entity`  \n**Description**: Retrieves all user entities.  \n**Response**: `ResponseApi` - An array of `UserEntity` objects wrapped in a `ResponseApi` object.\n\n### Get User Entity by ID\n\n**Route**: `GET /user-entity/:id`  \n**Description**: Retrieves a user entity by its ID.  \n**Path Parameters**: `id` - The ID of the user entity to retrieve.  \n**Response**: `ResponseApi` - The `UserEntity` object for the requested user entity, wrapped in a `ResponseApi` object.\n\n### Create User Entity\n\n**Route**: `POST /user-entity/create`  \n**Description**: Creates a new user entity.  \n**Request Body**: `CreateAndUpdateUserEntityDto` - DTO containing the data for the new user entity.  \n**Response**: `ResponseApi` - The created `UserEntity` object wrapped in a `ResponseApi` object.\n\n### Update User Entity\n\n**Route**: `PATCH /user-entity/update/:id`  \n**Description**: Updates an existing user entity.  \n**Path Parameters**: `id` - The ID of the user entity to update.  \n**Request Body**: `CreateAndUpdateUserEntityDto` - DTO containing the updated data for the user entity.  \n**Response**: `ResponseApi` - The updated `UserEntity` object wrapped in a `ResponseApi` object.\n\n### Delete User Entity\n\n**Route**: `DELETE /user-entity/delete/:id`  \n**Description**: Deletes an existing user entity.  \n**Path Parameters**: `id` - The ID of the user entity to delete.  \n**Response**: `ResponseApi` - The deleted `UserEntity` object wrapped in a `ResponseApi` object.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12976552"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Post user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Ben\",\n    \"firstName\": \"Ben\",\n    \"language\": \"FR\",\n    \"email\": \"mail@mail.com\",\n    \"password\": \"secret\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"create"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update user by field",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Name updated\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/update/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"update",
+								"1"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update all fields user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Jean\",\n\t\"firstName\": \"Robert\",\n\t\"language\": \"FR\",\n\t\"email\": \"add@add.com\",\n\t\"password\": \"pass\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/update-all-fields/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"update-all-fields",
+								"1"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/delete/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"delete",
+								"2"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Get user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/user/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Entity",
+			"item": [
+				{
+					"name": "Post entity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Name of the object\",\n    \"description\": \"Some description about the description\",\n    \"siret\": \"Siret\",\n    \"keyLicence\": \"6K5ZEA\",\n    \"website\": \"web.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/entity/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"entity",
+								"create"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update entity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Name updated\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/entity/update/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"entity",
+								"update",
+								"1"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete entity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/entity/delete/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"entity",
+								"delete",
+								"4"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Get entity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/entity",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"entity"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Get entity by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/entity/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"entity",
+								"3"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Update all fields Entity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Add your name in the body\",\n\t\"description\": \"Add your name in the body\",\n\t\"siret\": \"Add your \",\n\t\"keyLicence\": \"add@add.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/entity/update-all-fields/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"entity",
+								"update-all-fields",
+								"1"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserEntity",
+			"item": [
+				{
+					"name": "Post user-entity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"entityId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user-entity/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user-entity",
+								"create"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update user-entity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"entityId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user-entity/update/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user-entity",
+								"update",
+								"1"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user-entity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user-entity/delete/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user-entity",
+								"delete",
+								"1"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Get user-entity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/user-entity",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user-entity"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Get user-entity by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/user-entity/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user-entity",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000"
+		},
+		{
+			"key": "prod",
+			"value": "https://nest-api-test-4gx5.onrender.com",
+			"type": "string"
+		}
+	]
+}
