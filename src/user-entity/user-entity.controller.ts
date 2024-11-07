@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { UserEntityService } from './user-entity.service';
 import { UserEntity } from './entity/user_entityObject.entity';
+import { CreateAndUpdateUserEntityDto } from './dto/create-user-entity.dto';
 
 @Controller('user-entity')
 export class UserEntityController {
@@ -24,18 +25,18 @@ export class UserEntityController {
     // Create a new user entity
     @Post('create')
     async createUserEntity(
-        @Body() userEntity: UserEntity
+        @Body() userEntityDto: CreateAndUpdateUserEntityDto
     ) {
-        return this.userEntityService.createUserEntity(userEntity);
+        return this.userEntityService.createUserEntity(userEntityDto);
     }
 
     // Update a user entity by id
     @Patch('update/:id')
     async updateUserEntity(
-        @Param('id') id: number,
-        @Body() userEntity: UserEntity
+        @Param('id', ) id: number,
+        @Body() userEntityDto: CreateAndUpdateUserEntityDto
     ) {
-        return this.userEntityService.updateUserEntity(id, userEntity);
+        return this.userEntityService.updateUserEntity(id, userEntityDto);
     }
 
     // Delete a user entity by id

@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString } from "class-validator";
 
-export class AddEntityObjectDto {
+export class CreateEntityObjectDto {
     @IsNotEmpty()
     @IsString()
     name: string;

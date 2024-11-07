@@ -2,8 +2,8 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from 
 import { EntityService } from './entity.service';
 import { EntityObject } from './entity/entityObject.entity';
 import { ResponseApi } from 'src/shared/response/ResponseApi';
-import { AddEntityObjectDto } from './dto/entityAdd.dto';
-import { UpdateEntityObjectDto } from './dto/entityUpdate.dto';
+import { CreateEntityObjectDto } from './dto/create.entity.dto';
+import { UpdateEntityObjectDto } from './dto/update.entity.dto';
 
 @Controller('entity')
 export class EntityController {
@@ -20,7 +20,7 @@ export class EntityController {
 
     // Create a new entity
     @Post('create')
-    async create(@Body() entityDto: AddEntityObjectDto): Promise<ResponseApi<EntityObject>> {
+    async create(@Body() entityDto: CreateEntityObjectDto): Promise<ResponseApi<EntityObject>> {
         return this.entityService.createEntity(entityDto);
     }
 

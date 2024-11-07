@@ -2,8 +2,8 @@ import { HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { User } from './entity/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { UserAddDto } from './dto/userAdd.dto';
-import { UserUpdateDto } from './dto/userUpdate.dto';
+import { CreateUserDto } from './dto/create.user.dto';
+import { UpdateUserDto } from './dto/update.user.dto';
 import { ResponseApi } from 'src/shared/response/ResponseApi';
 
 @Injectable()
@@ -47,7 +47,7 @@ export class UserService {
     }
 
     // Create a new user
-    async createUser(userDto: UserAddDto): Promise<ResponseApi<User>> {
+    async createUser(userDto: CreateUserDto): Promise<ResponseApi<User>> {
         let user = new User();
         user = { ...user, ...userDto };
         user.createdAt = new Date();
@@ -60,9 +60,9 @@ export class UserService {
     }
 
     // Update an existing user
-    async updateUser(id: number, userUpdateDto: UserUpdateDto): Promise<ResponseApi<any>> {
+    async updateUser(id: number, UpdateUserDto: UpdateUserDto): Promise<ResponseApi<any>> {
         const verification = await this.findOneUserVerificate(id);
-        await this.userRepository.update(id, userUpdateDto);
+        await this.userRepository.update(id, UpdateUserDto);
         const updatedUser = await this.userRepository.findOne({ where: { id } });
         return new ResponseApi(
             HttpStatus.OK,

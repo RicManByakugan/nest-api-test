@@ -1,8 +1,8 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './entity/user.entity';
-import { UserAddDto } from './dto/userAdd.dto';
-import { UserUpdateDto } from './dto/userUpdate.dto';
+import { CreateUserDto } from './dto/create.user.dto';
+import { UpdateUserDto } from './dto/update.user.dto';
 import { ResponseApi } from 'src/shared/response/ResponseApi';
 
 @Controller('user')
@@ -20,13 +20,13 @@ export class UserController {
 
     // Create a new user
     @Post('create')
-    async create(@Body() userDto: UserAddDto): Promise<ResponseApi<User>> {
+    async create(@Body() userDto: CreateUserDto): Promise<ResponseApi<User>> {
         return this.userService.createUser(userDto);
     }
 
     // Update an existing user
     @Patch('update/:id')
-    async update(@Param('id') id: number, @Body() user: UserUpdateDto): Promise<ResponseApi<User>> {
+    async update(@Param('id') id: number, @Body() user: UpdateUserDto): Promise<ResponseApi<User>> {
         return this.userService.updateUser(id, user);
     }
 

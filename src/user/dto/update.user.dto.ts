@@ -1,6 +1,6 @@
 import { IsOptional, Min, Max, IsString, IsEmail } from "class-validator";
 
-export class UserUpdateDto {
+export class UpdateUserDto {
     @IsOptional()
     @Min(3)
     @Max(20)

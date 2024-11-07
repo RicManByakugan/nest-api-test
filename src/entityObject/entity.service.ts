@@ -3,8 +3,8 @@ import { EntityObject } from './entity/entityObject.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ResponseApi } from 'src/shared/response/ResponseApi';
-import { AddEntityObjectDto } from './dto/entityAdd.dto';
-import { UpdateEntityObjectDto } from './dto/entityUpdate.dto';
+import { CreateEntityObjectDto } from './dto/create.entity.dto';
+import { UpdateEntityObjectDto } from './dto/update.entity.dto';
 
 @Injectable()
 export class EntityService {
@@ -46,7 +46,7 @@ export class EntityService {
     }
 
     // Create a new entity
-    async createEntity(entityDto: AddEntityObjectDto): Promise<ResponseApi<EntityObject>> {
+    async createEntity(entityDto: CreateEntityObjectDto): Promise<ResponseApi<EntityObject>> {
         let entity = new EntityObject();
         entity = { ...entity, ...entityDto };
         entity.createdAt = new Date();
