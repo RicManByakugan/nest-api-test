@@ -11,7 +11,7 @@ https://nest-api-test-4gx5.onrender.com/user/:id
 
 POST
 https://nest-api-test-4gx5.onrender.com/user/create
-### Data structure
+##### Data structure
 {
 	"name": "Ben",
     "firstName": "Ben",
@@ -25,7 +25,7 @@ https://nest-api-test-4gx5.onrender.com/user/delete/:id
 
 PUT
 https://nest-api-test-4gx5.onrender.com/user/update-all-fields/:id
-### Data structure
+##### Data structure
 {
 	"name": "Jean",
 	"firstName": "Robert",
@@ -36,7 +36,7 @@ https://nest-api-test-4gx5.onrender.com/user/update-all-fields/:id
 
 PATCH
 https://nest-api-test-4gx5.onrender.com/user/update/:id
-### Data structure
+##### Data structure
 {
 	"name": "Name updated"
 }
@@ -50,7 +50,7 @@ https://nest-api-test-4gx5.onrender.com/entity/:id
 
 POST
 https://nest-api-test-4gx5.onrender.com/entity/create
-### Data structure
+##### Data structure
 {
 	"name": "Name of the object",
     "description": "Some description about the description",
@@ -61,7 +61,7 @@ https://nest-api-test-4gx5.onrender.com/entity/create
 
 PUT
 https://nest-api-test-4gx5.onrender.com/entity/update-all-fields/:id
-### Data structure
+##### Data structure
 {
 	"name": "Add your name in the body",
 	"description": "Add your name in the body",
@@ -71,7 +71,7 @@ https://nest-api-test-4gx5.onrender.com/entity/update-all-fields/:id
 
 PATCH
 https://nest-api-test-4gx5.onrender.com/entity/update/:id
-### Data structure
+##### Data structure
 {
 	"name": "Name updated"
 }
@@ -88,7 +88,7 @@ https://nest-api-test-4gx5.onrender.com/user-entity/delete/:id
 
 POST
 https://nest-api-test-4gx5.onrender.com/user-entity/create
-### Data structure
+##### Data structure
 {
     "userId": 1,
     "entityId": 1
@@ -96,7 +96,7 @@ https://nest-api-test-4gx5.onrender.com/user-entity/create
 
 PATCH
 https://nest-api-test-4gx5.onrender.com/user-entity/update/:id
-### Data structure
+##### Data structure
 {
     "userId": 1,
     "entityId": 2
