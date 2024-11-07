@@ -1,25 +1,24 @@
-import { IsNotEmpty, IsString, IsEmail, Length } from "class-validator";
+import { IsOptional, IsString, IsEmail, Length } from "class-validator";
 
-export class CreateUserDto {
+export class UpdateAllFieldUserDto {
     @Length(1, 80)
-    @IsNotEmpty()
     @IsString()
     name: string;
     
     @Length(1, 50)
-    @IsNotEmpty()
     @IsString()
     firstName: string;
     
     @Length(2, 2)
-    @IsNotEmpty()
+    @IsString()
     language: string;
     
-    @IsEmail()
+    @IsString()
     @Length(1, 100)
+    @IsEmail()
     email: string;
     
     @Length(1, 250)
-    @IsNotEmpty()
+    @IsString()
     password: string;
 }

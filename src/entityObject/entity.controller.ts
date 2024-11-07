@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Put } from '@nestjs/common';
 import { EntityService } from './entity.service';
 import { EntityObject } from './entity/entityObject.entity';
 import { ResponseApi } from 'src/shared/response/ResponseApi';
@@ -28,6 +28,12 @@ export class EntityController {
     // Update an existing entity
     @Patch('update/:id')
     async update(@Param('id') id: number, @Body() entity: UpdateEntityObjectDto): Promise<ResponseApi<EntityObject>> {
+        return this.entityService.updateEntity(id, entity);
+    }
+
+    // Update all fields in an existing entity
+    @Put('update-all-fields/:id')
+    async updateAllFields(@Param('id') id: number, @Body() entity: UpdateEntityObjectDto): Promise<ResponseApi<EntityObject>> {
         return this.entityService.updateEntity(id, entity);
     }
 
