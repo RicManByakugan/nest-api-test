@@ -1,23 +1,19 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsString } from "class-validator";
 
-export class AddEntityObjectDto {
-    @IsNotEmpty()
+export class UpdateAllFieldsEntityObjectDto {
+
     @IsString()
     name: string;
 
-    @IsNotEmpty()
     @IsString()
     description: string;
 
-    @IsNotEmpty()
     @IsString()
     siret: string;
 
-    @IsNotEmpty()
     @IsString()
     keyLicence: string;
 
-    @IsNotEmpty()
     @IsString()
     website: string;
 }

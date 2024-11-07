@@ -1,9 +1,11 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Put } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './entity/user.entity';
-import { UserAddDto } from './dto/userAdd.dto';
-import { UserUpdateDto } from './dto/userUpdate.dto';
+import { CreateUserDto } from './dto/create.user.dto';
+import { UpdateUserDto } from './dto/update.user.dto';
 import { ResponseApi } from 'src/shared/response/ResponseApi';
+import { ResponseUserDto } from './dto/response.user.dto';
+import { UpdateAllFieldUserDto } from './dto/update.all.user.dto';
 
 @Controller('user')
 export class UserController {
@@ -14,20 +16,26 @@ export class UserController {
 
     // Find all users
     @Get()
-    async findAll(): Promise<ResponseApi<User[]>> {
+    async findAll(): Promise<ResponseApi<ResponseUserDto[]>> {
         return this.userService.findAllUser();
     }
 
     // Create a new user
     @Post('create')
-    async create(@Body() userDto: UserAddDto): Promise<ResponseApi<User>> {
+    async create(@Body() userDto: CreateUserDto): Promise<ResponseApi<ResponseUserDto>> {
         return this.userService.createUser(userDto);
     }
 
-    // Update an existing user
+    // Update an existing user each field
     @Patch('update/:id')
-    async update(@Param('id') id: number, @Body() user: UserUpdateDto): Promise<ResponseApi<User>> {
+    async update(@Param('id') id: number, @Body() user: UpdateUserDto): Promise<ResponseApi<User>> {
         return this.userService.updateUser(id, user);
+    }
+
+    // Update an existing user all fields
+    @Put('update-all-fields/:id')
+    async updateAll(@Param('id') id: number, @Body() user: UpdateAllFieldUserDto): Promise<ResponseApi<User>> {
+        return this.userService.updateUserAllField(id, user);
     }
 
     // Remove an existing user
@@ -40,7 +48,7 @@ export class UserController {
      @Get(':id')
      async findOne(
          @Param('id', ParseIntPipe) id: number
-     ): Promise<ResponseApi<User>> {
+     ): Promise<ResponseApi<ResponseUserDto>> {
          return this.userService.findOneUser(id);
      }
 

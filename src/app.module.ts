@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { EntityModule } from './entityObject/entity.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserEntityModule } from './user-entity/user-entity.module';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -23,6 +24,7 @@ dotenv.config();
       synchronize: true, 
       retryAttempts: 2,
     }),
+    UserEntityModule,
   ],
   controllers: [AppController],
   providers: [AppService],

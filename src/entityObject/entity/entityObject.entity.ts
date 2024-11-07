@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToMany } from 'typeorm';
 import { User } from '../../user/entity/user.entity';
+import { UserEntity } from 'src/user-entity/entity/user_entityObject.entity';
 
 @Entity("entity")
 export class EntityObject {
@@ -24,7 +25,6 @@ export class EntityObject {
   @Column({ type: 'datetime' })
   createdAt: Date;
 
-  @ManyToMany(() => User, (user) => user.entitiesObject)
-  @JoinTable() 
-  users: User[];
+  @OneToMany(() => UserEntity, (userEntity) => userEntity.user)
+  userEntities: UserEntity[];
 }
