@@ -6,6 +6,7 @@ import { ResponseApi } from 'src/shared/response/ResponseApi';
 import { CreateEntityObjectDto } from './dto/create.entity.dto';
 import { UpdateEntityObjectDto } from './dto/update.entity.dto';
 import { ResponseEntityDto } from './dto/response.entity.dto';
+import { UpdateAllFieldsEntityObjectDto } from './dto/update.all.entity.dto';
 
 @Injectable()
 export class EntityService {
@@ -64,6 +65,19 @@ export class EntityService {
 
     // Update an existing entity
     async updateEntity(id: number, entityUpdateDto: UpdateEntityObjectDto): Promise<ResponseApi<any>> {
+        await this.findOneEntityVerificate(id);
+        await this.entityRepository.update(id, entityUpdateDto);
+        const updatedEntity = await this.entityRepository.findOne({ where: { id } });
+        const responseData = this.mapToEntityResponseDto(updatedEntity);
+        return new ResponseApi(
+            HttpStatus.OK,
+            'Entity updated successfully',
+            responseData
+        );
+    }
+
+    // Update all fields in an existing entity
+    async updateAllFieldsEntity(id: number, entityUpdateDto: UpdateAllFieldsEntityObjectDto): Promise<ResponseApi<any>> {
         await this.findOneEntityVerificate(id);
         await this.entityRepository.update(id, entityUpdateDto);
         const updatedEntity = await this.entityRepository.findOne({ where: { id } });
