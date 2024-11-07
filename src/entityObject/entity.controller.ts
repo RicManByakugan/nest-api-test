@@ -4,6 +4,7 @@ import { EntityObject } from './entity/entityObject.entity';
 import { ResponseApi } from 'src/shared/response/ResponseApi';
 import { CreateEntityObjectDto } from './dto/create.entity.dto';
 import { UpdateEntityObjectDto } from './dto/update.entity.dto';
+import { ResponseEntityDto } from './dto/response.entity.dto';
 
 @Controller('entity')
 export class EntityController {
@@ -14,13 +15,13 @@ export class EntityController {
 
     // Find all entities
     @Get()
-    async findAll(): Promise<ResponseApi<EntityObject[]>> {
+    async findAll(): Promise<ResponseApi<ResponseEntityDto[]>> {
         return this.entityService.findAllEntity();
     }
 
     // Create a new entity
     @Post('create')
-    async create(@Body() entityDto: CreateEntityObjectDto): Promise<ResponseApi<EntityObject>> {
+    async create(@Body() entityDto: CreateEntityObjectDto): Promise<ResponseApi<ResponseEntityDto>> {
         return this.entityService.createEntity(entityDto);
     }
 
@@ -41,7 +42,7 @@ export class EntityController {
      @Get(':id')
      async findOne(
          @Param('id', ParseIntPipe) id: number
-     ): Promise<ResponseApi<EntityObject>> {
+     ): Promise<ResponseApi<ResponseEntityDto>> {
          return this.entityService.findOneEntity(id);
      }
 }
