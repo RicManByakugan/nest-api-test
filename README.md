@@ -20,29 +20,29 @@ Ce projet utilise NestJS pour gérer une API. Vous pouvez importer la collection
 
 ### User API
 
-- **GET** /user  
+- **GET** https://nest-api-test-4gx5.onrender.com/user  
   Récupère tous les utilisateurs.
   **Réponse**: `ResponseApi<ResponseUserDto[]>` - Un tableau d'objets `ResponseUserDto` enveloppé dans un objet `ResponseApi`.
 
-- **GET** /user/:id  
+- **GET** https://nest-api-test-4gx5.onrender.com/user/:id  
   Récupère un utilisateur par ID.
   **Paramètres de chemin**: `id` - L'ID de l'utilisateur à récupérer.
   **Réponse**: `ResponseApi<ResponseUserDto>` - L'objet `ResponseUserDto` de l'utilisateur demandé, enveloppé dans un objet `ResponseApi`.
 
-- **POST** /user/create  
+- **POST** https://nest-api-test-4gx5.onrender.com/user/create  
   Crée un nouvel utilisateur.
   **Structure des données** :
   ```json
   {
     "name": "Ben",
-    "firstName": "Ben", 
+    "firstName": "Ben",
     "language": "FR",
     "email": "mail@mail.com",
     "password": "secret"
   }
   **Réponse**: `ResponseApi<ResponseUserDto>` - L'objet `ResponseUserDto` créé, enveloppé dans un objet `ResponseApi`.
 
-- **PATCH** /user/update/:id
+- **PATCH** https://nest-api-test-4gx5.onrender.com/user/update/:id
   Met à jour un utilisateur existant.
   **Paramètres de chemin**: `id` - L'ID de l'utilisateur à mettre à jour.
   **Structure des données** :
@@ -52,7 +52,7 @@ Ce projet utilise NestJS pour gérer une API. Vous pouvez importer la collection
   }
   **Réponse**: `ResponseApi<User>` - L'objet `User` mis à jour, enveloppé dans un objet `ResponseApi`.
 
-- **PUT** /user/update-all-fields/:id
+- **PUT** https://nest-api-test-4gx5.onrender.com/user/update-all-fields/:id
   Met à jour tous les champs d'un utilisateur existant.
   **Paramètres de chemin**: `id` - L'ID de l'utilisateur à mettre à jour.
   **Structure des données** :
@@ -66,23 +66,23 @@ Ce projet utilise NestJS pour gérer une API. Vous pouvez importer la collection
   }
   **Réponse**: `ResponseApi<User>` - L'objet `User` mis à jour, enveloppé dans un objet `ResponseApi`.
 
-- **DELETE** /user/delete/:id
+- **DELETE** https://nest-api-test-4gx5.onrender.com/user/delete/:id
   Supprime un utilisateur existant.
   **Paramètres de chemin**: `id` - L'ID de l'utilisateur à supprimer.
   **Réponse**: `ResponseApi<User>` - L'objet `User` supprimé, enveloppé dans un objet `ResponseApi`.
 
 ### Entity API
 
-- **GET** /entity
+- **GET** https://nest-api-test-4gx5.onrender.com/entity
   Récupère toutes les entités.
   **Réponse**: `ResponseApi<ResponseEntityDto[]>` - Un tableau d'objets `ResponseEntityDto` enveloppé dans un objet `ResponseApi`.
 
-- **GET** /entity/:id
+- **GET** https://nest-api-test-4gx5.onrender.com/entity/:id
   Récupère une entité par ID.
   **Paramètres de chemin**: `id` - L'ID de l'entité à récupérer.
   **Réponse**: `ResponseApi<ResponseEntityDto>` - L'objet `ResponseEntityDto` de l'entité demandée, enveloppé dans un objet `ResponseApi`.
 
-- **POST** /entity/create
+- **POST** https://nest-api-test-4gx5.onrender.com/entity/create
   Crée une nouvelle entité.
   **Structure des données** :
   ```json
@@ -95,7 +95,7 @@ Ce projet utilise NestJS pour gérer une API. Vous pouvez importer la collection
   }
   **Réponse**: `ResponseApi<ResponseEntityDto>` - L'objet `ResponseEntityDto` créé, enveloppé dans un objet `ResponseApi`.
 
-- **PATCH** /entity/update/:id
+- **PATCH** https://nest-api-test-4gx5.onrender.com/entity/update/:id
   Met à jour une entité existante.
   **Paramètres de chemin**: `id` - L'ID de l'entité à mettre à jour.
   **Structure des données** :
@@ -105,7 +105,7 @@ Ce projet utilise NestJS pour gérer une API. Vous pouvez importer la collection
   }
   **Réponse**: `ResponseApi<EntityObject>` - L'objet `EntityObject` mis à jour, enveloppé dans un objet `ResponseApi`.
 
-- **PUT** /entity/update-all-fields/:id
+- **PUT** https://nest-api-test-4gx5.onrender.com/entity/update-all-fields/:id
   Met à jour tous les champs d'une entité existante.
   **Paramètres de chemin**: `id` - L'ID de l'entité à mettre à jour.
   **Structure des données** :
@@ -118,23 +118,23 @@ Ce projet utilise NestJS pour gérer une API. Vous pouvez importer la collection
   }
   **Réponse**: `ResponseApi<EntityObject>` - L'objet `EntityObject` mis à jour, enveloppé dans un objet `ResponseApi`.
 
-- **DELETE** /entity/delete/:id
+- **DELETE** https://nest-api-test-4gx5.onrender.com/entity/delete/:id
   Supprime une entité existante.
   **Paramètres de chemin**: `id` - L'ID de l'entité à supprimer.
   **Réponse**: `ResponseApi<EntityObject>` - L'objet `EntityObject` supprimé, enveloppé dans un objet `ResponseApi`.
 
 ### UserEntity API
 
-- **GET** /user-entity
+- **GET** https://nest-api-test-4gx5.onrender.com/user-entity
   Récupère toutes les relations entre utilisateurs et entités.
   **Réponse**: `ResponseApi<UserEntity[]>` - Un tableau d'objets `UserEntity` enveloppé dans un objet `ResponseApi`.
 
-- **GET** /user-entity/:id
+- **GET** https://nest-api-test-4gx5.onrender.com/user-entity/:id
   Récupère une relation entre un utilisateur et une entité par son ID.
   **Paramètres de chemin**: `id` - L'ID de la relation à récupérer.
   **Réponse**: `ResponseApi<UserEntity>` - L'objet `UserEntity` de la relation demandée, enveloppé dans un objet `ResponseApi`.
 
-- **POST** /user-entity/create
+- **POST** https://nest-api-test-4gx5.onrender.com/user-entity/create
   Crée une nouvelle relation entre un utilisateur et une entité.
   **Structure des données** :
   ```json
@@ -144,7 +144,7 @@ Ce projet utilise NestJS pour gérer une API. Vous pouvez importer la collection
   }
   **Réponse**: `ResponseApi<UserEntity>` - L'objet `UserEntity` créé, enveloppé dans un objet `ResponseApi`.
 
-- **PATCH** /user-entity/update/:id
+- **PATCH** https://nest-api-test-4gx5.onrender.com/user-entity/update/:id
   Met à jour une relation existante entre un utilisateur et une entité.
   **Paramètres de chemin**: `id` - L'ID de la relation à mettre à jour.
   **Structure des données** :
@@ -155,7 +155,7 @@ Ce projet utilise NestJS pour gérer une API. Vous pouvez importer la collection
   }
   **Réponse**: `ResponseApi<UserEntity>` - L'objet `UserEntity` mis à jour, enveloppé dans un objet `ResponseApi`.
 
-- **DELETE** /user-entity/delete/:id
+- **DELETE** https://nest-api-test-4gx5.onrender.com/user-entity/delete/:id
   Supprime une relation existante entre un utilisateur et une entité.
   **Paramètres de chemin**: `id` - L'ID de la relation à supprimer.
   **Réponse**: `ResponseApi<UserEntity>` - L'objet `UserEntity` supprimé, enveloppé dans un objet `ResponseApi`.

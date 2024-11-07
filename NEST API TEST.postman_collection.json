@@ -677,11 +677,16 @@
 	"variable": [
 		{
 			"key": "base_url",
-			"value": "http://localhost:3000"
+			"value": "https://nest-api-test-4gx5.onrender.com"
 		},
 		{
 			"key": "prod",
 			"value": "https://nest-api-test-4gx5.onrender.com",
+			"type": "string"
+		},
+		{
+			"key": "local",
+			"value": "http://localhost:3000",
 			"type": "string"
 		}
 	]
