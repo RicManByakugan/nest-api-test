@@ -1,242 +1,170 @@
+# Nest API Project
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-Vous pouvez importer la collection Postman avec le fichier [`NEST API TEST.postman_collection.json`](./NEST%20API%20TEST.postman_collection.json) pour effectuer les tests.
+Ce projet utilise NestJS pour gérer une API. Vous pouvez importer la collection Postman avec le fichier [`NEST API TEST.postman_collection.json`](./NEST%20API%20TEST.postman_collection.json) pour effectuer les tests.
 
+## Table des matières
+- [Résumé des API](#résumé-des-api)
+  - [User API](#user-api)
+  - [Entity API](#entity-api)
+  - [UserEntity API](#userentity-api)
+- [Installation](#installation)
+- [Compilation et exécution](#compilation-et-exécution)
+- [Tests](#tests)
+- [Déploiement](#déploiement)
 
-## Résumé User API
-GET
-https://nest-api-test-4gx5.onrender.com/user
----
-GET
-https://nest-api-test-4gx5.onrender.com/user/:id
----
-POST
-https://nest-api-test-4gx5.onrender.com/user/create
-##### Data structure
-{
-	"name": "Ben",
-    "firstName": "Ben",
+## Résumé des API
+
+### User API
+
+- **GET** /user  
+  Récupère tous les utilisateurs.
+  **Réponse**: `ResponseApi<ResponseUserDto[]>` - Un tableau d'objets `ResponseUserDto` enveloppé dans un objet `ResponseApi`.
+
+- **GET** /user/:id  
+  Récupère un utilisateur par ID.
+  **Paramètres de chemin**: `id` - L'ID de l'utilisateur à récupérer.
+  **Réponse**: `ResponseApi<ResponseUserDto>` - L'objet `ResponseUserDto` de l'utilisateur demandé, enveloppé dans un objet `ResponseApi`.
+
+- **POST** /user/create  
+  Crée un nouvel utilisateur.
+  **Structure des données** :
+  ```json
+  {
+    "name": "Ben",
+    "firstName": "Ben", 
     "language": "FR",
     "email": "mail@mail.com",
     "password": "secret"
-}
----
-DELETE
-https://nest-api-test-4gx5.onrender.com/user/delete/:id
----
-PUT
-https://nest-api-test-4gx5.onrender.com/user/update-all-fields/:id
-##### Data structure
-{
-	"name": "Jean",
-	"firstName": "Robert",
-	"language": "FR",
-	"email": "add@add.com",
-	"password": "pass"
-}
----
-PATCH
-https://nest-api-test-4gx5.onrender.com/user/update/:id
-##### Data structure
-{
-	"name": "Name updated"
-}
----
+  }
+  **Réponse**: `ResponseApi<ResponseUserDto>` - L'objet `ResponseUserDto` créé, enveloppé dans un objet `ResponseApi`.
 
-## Résumé Entity API
-GET
-https://nest-api-test-4gx5.onrender.com/entity
----
-GET
-https://nest-api-test-4gx5.onrender.com/entity/:id
----
-POST
-https://nest-api-test-4gx5.onrender.com/entity/create
-##### Data structure
-{
-	"name": "Name of the object",
+- **PATCH** /user/update/:id
+  Met à jour un utilisateur existant.
+  **Paramètres de chemin**: `id` - L'ID de l'utilisateur à mettre à jour.
+  **Structure des données** :
+  ```json
+  {
+    "name": "Name updated"
+  }
+  **Réponse**: `ResponseApi<User>` - L'objet `User` mis à jour, enveloppé dans un objet `ResponseApi`.
+
+- **PUT** /user/update-all-fields/:id
+  Met à jour tous les champs d'un utilisateur existant.
+  **Paramètres de chemin**: `id` - L'ID de l'utilisateur à mettre à jour.
+  **Structure des données** :
+  ```json
+  {
+    "name": "Jean",
+    "firstName": "Robert",
+    "language": "FR",
+    "email": "add@add.com",
+    "password": "pass"
+  }
+  **Réponse**: `ResponseApi<User>` - L'objet `User` mis à jour, enveloppé dans un objet `ResponseApi`.
+
+- **DELETE** /user/delete/:id
+  Supprime un utilisateur existant.
+  **Paramètres de chemin**: `id` - L'ID de l'utilisateur à supprimer.
+  **Réponse**: `ResponseApi<User>` - L'objet `User` supprimé, enveloppé dans un objet `ResponseApi`.
+
+### Entity API
+
+- **GET** /entity
+  Récupère toutes les entités.
+  **Réponse**: `ResponseApi<ResponseEntityDto[]>` - Un tableau d'objets `ResponseEntityDto` enveloppé dans un objet `ResponseApi`.
+
+- **GET** /entity/:id
+  Récupère une entité par ID.
+  **Paramètres de chemin**: `id` - L'ID de l'entité à récupérer.
+  **Réponse**: `ResponseApi<ResponseEntityDto>` - L'objet `ResponseEntityDto` de l'entité demandée, enveloppé dans un objet `ResponseApi`.
+
+- **POST** /entity/create
+  Crée une nouvelle entité.
+  **Structure des données** :
+  ```json
+  {
+    "name": "Name of the object",
     "description": "Some description about the description",
     "siret": "Siret",
     "keyLicence": "6K5ZEA",
     "website": "web.com"
-}
----
-PUT
-https://nest-api-test-4gx5.onrender.com/entity/update-all-fields/:id
-##### Data structure
-{
-	"name": "Add your name in the body",
-	"description": "Add your name in the body",
-	"siret": "Add your ",
-	"keyLicence": "add@add.com"
-}
----
-PATCH
-https://nest-api-test-4gx5.onrender.com/entity/update/:id
-##### Data structure
-{
-	"name": "Name updated"
-}
----
+  }
+  **Réponse**: `ResponseApi<ResponseEntityDto>` - L'objet `ResponseEntityDto` créé, enveloppé dans un objet `ResponseApi`.
 
-## Résumé UserEntity API
-GET
-https://nest-api-test-4gx5.onrender.com/user-entity
----
-GET
-https://nest-api-test-4gx5.onrender.com/user-entity/:id
----
-DELETE
-https://nest-api-test-4gx5.onrender.com/user-entity/delete/:id
----
-POST
-https://nest-api-test-4gx5.onrender.com/user-entity/create
-##### Data structure
-{
+- **PATCH** /entity/update/:id
+  Met à jour une entité existante.
+  **Paramètres de chemin**: `id` - L'ID de l'entité à mettre à jour.
+  **Structure des données** :
+  ```json
+  {
+    "name": "Name updated"
+  }
+  **Réponse**: `ResponseApi<EntityObject>` - L'objet `EntityObject` mis à jour, enveloppé dans un objet `ResponseApi`.
+
+- **PUT** /entity/update-all-fields/:id
+  Met à jour tous les champs d'une entité existante.
+  **Paramètres de chemin**: `id` - L'ID de l'entité à mettre à jour.
+  **Structure des données** :
+  ```json
+  {
+    "name": "Add your name in the body",
+    "description": "Add your name in the body",
+    "siret": "Add your ",
+    "keyLicence": "add@add.com"
+  }
+  **Réponse**: `ResponseApi<EntityObject>` - L'objet `EntityObject` mis à jour, enveloppé dans un objet `ResponseApi`.
+
+- **DELETE** /entity/delete/:id
+  Supprime une entité existante.
+  **Paramètres de chemin**: `id` - L'ID de l'entité à supprimer.
+  **Réponse**: `ResponseApi<EntityObject>` - L'objet `EntityObject` supprimé, enveloppé dans un objet `ResponseApi`.
+
+### UserEntity API
+
+- **GET** /user-entity
+  Récupère toutes les relations entre utilisateurs et entités.
+  **Réponse**: `ResponseApi<UserEntity[]>` - Un tableau d'objets `UserEntity` enveloppé dans un objet `ResponseApi`.
+
+- **GET** /user-entity/:id
+  Récupère une relation entre un utilisateur et une entité par son ID.
+  **Paramètres de chemin**: `id` - L'ID de la relation à récupérer.
+  **Réponse**: `ResponseApi<UserEntity>` - L'objet `UserEntity` de la relation demandée, enveloppé dans un objet `ResponseApi`.
+
+- **POST** /user-entity/create
+  Crée une nouvelle relation entre un utilisateur et une entité.
+  **Structure des données** :
+  ```json
+  {
     "userId": 1,
     "entityId": 1
-}
----
-PATCH
-https://nest-api-test-4gx5.onrender.com/user-entity/update/:id
-##### Data structure
-{
+  }
+  **Réponse**: `ResponseApi<UserEntity>` - L'objet `UserEntity` créé, enveloppé dans un objet `ResponseApi`.
+
+- **PATCH** /user-entity/update/:id
+  Met à jour une relation existante entre un utilisateur et une entité.
+  **Paramètres de chemin**: `id` - L'ID de la relation à mettre à jour.
+  **Structure des données** :
+  ```json
+  {
     "userId": 1,
     "entityId": 2
-}
+  }
+  **Réponse**: `ResponseApi<UserEntity>` - L'objet `UserEntity` mis à jour, enveloppé dans un objet `ResponseApi`.
 
+- **DELETE** /user-entity/delete/:id
+  Supprime une relation existante entre un utilisateur et une entité.
+  **Paramètres de chemin**: `id` - L'ID de la relation à supprimer.
+  **Réponse**: `ResponseApi<UserEntity>` - L'objet `UserEntity` supprimé, enveloppé dans un objet `ResponseApi`.
 
-## Description
-
-## User API - Endpoints
-
-### Get All Users
-**Route**: `GET /user`
-**Description**: Retrieves all users.
-**Response**: `ResponseApi<ResponseUserDto[]>` - An array of `ResponseUserDto` objects wrapped in a `ResponseApi` object.
-
-### Create User
-**Route**: `POST /user/create`
-**Description**: Creates a new user.
-**Request Body**: `CreateUserDto` - DTO containing the data for the new user.
-**Response**: `ResponseApi<ResponseUserDto>` - The created `ResponseUserDto` object wrapped in a `ResponseApi` object.
-
-### Update User
-**Route**: `PATCH /user/update/:id`
-**Description**: Updates an existing user.
-**Path Parameters**: `id` - The ID of the user to update.
-**Request Body**: `UpdateUserDto` - DTO containing the updated data for the user.
-**Response**: `ResponseApi<User>` - The updated `User` object wrapped in a `ResponseApi` object.
-
-### Update All Fields of a User
-**Route**: `PUT /user/update-all-fields/:id`
-**Description**: Updates all fields of an existing user.
-**Path Parameters**: `id` - The ID of the user to update.
-**Request Body**: `UpdateAllFieldUserDto` - DTO containing the updated data for the user.
-**Response**: `ResponseApi<User>` - The updated `User` object wrapped in a `ResponseApi` object.
-
-### Delete User
-**Route**: `DELETE /user/delete/:id`
-**Description**: Deletes an existing user.
-**Path Parameters**: `id` - The ID of the user to delete.
-**Response**: `ResponseApi<User>` - The deleted `User` object wrapped in a `ResponseApi` object.
-
-### Get User by ID
-**Route**: `GET /user/:id`
-**Description**: Retrieves a user by its ID.
-**Path Parameters**: `id` - The ID of the user to retrieve.
-**Response**: `ResponseApi<ResponseUserDto>` - The `ResponseUserDto` object for the requested user, wrapped in a `ResponseApi` object.
-
-
-
-## Entity API - Endpoints
-
-### Get All Entities
-**Route**: `GET /entity`
-**Description**: Retrieves all entities.
-**Response**: `ResponseApi<ResponseEntityDto[]>` - An array of `ResponseEntityDto` objects wrapped in a `ResponseApi` object.
-
-### Create Entity
-**Route**: `POST /entity/create`
-**Description**: Creates a new entity.
-**Request Body**: `CreateEntityObjectDto` - DTO containing the data for the new entity.
-**Response**: `ResponseApi<ResponseEntityDto>` - The created `ResponseEntityDto` object wrapped in a `ResponseApi` object.
-
-### Update Entity
-**Route**: `PATCH /entity/update/:id`
-**Description**: Updates an existing entity.
-**Path Parameters**: `id` - The ID of the entity to update.
-**Request Body**: `UpdateEntityObjectDto` - DTO containing the updated data for the entity.
-**Response**: `ResponseApi<EntityObject>` - The updated `EntityObject` wrapped in a `ResponseApi` object.
-
-### Update All Fields in an Entity
-**Route**: `PUT /entity/update-all-fields/:id`
-**Description**: Updates all fields of an existing entity.
-**Path Parameters**: `id` - The ID of the entity to update.
-**Request Body**: `UpdateEntityObjectDto` - DTO containing the updated data for the entity.
-**Response**: `ResponseApi<EntityObject>` - The updated `EntityObject` wrapped in a `ResponseApi` object.
-
-### Delete Entity
-**Route**: `DELETE /entity/delete/:id`
-**Description**: Deletes an existing entity.
-**Path Parameters**: `id` - The ID of the entity to delete.
-**Response**: `ResponseApi<EntityObject>` - The deleted `EntityObject` wrapped in a `ResponseApi` object.
-
-### Get Entity by ID
-**Route**: `GET /entity/:id`
-**Description**: Retrieves an entity by its ID.
-**Path Parameters**: `id` - The ID of the entity to retrieve.
-**Response**: `ResponseApi<ResponseEntityDto>` - The `ResponseEntityDto` object for the requested entity, wrapped in a `ResponseApi` object.
-
-
-
-## UserEntity API - Endpoints
-
-### Get All User Entities
-**Route**: `GET /user-entity`
-**Description**: Retrieves all user entities.
-**Response**: `ResponseApi<UserEntity[]>` - An array of `UserEntity` objects wrapped in a `ResponseApi` object.
-
-### Get User Entity by ID
-**Route**: `GET /user-entity/:id`
-**Description**: Retrieves a user entity by its ID.
-**Path Parameters**: `id` - The ID of the user entity to retrieve.
-**Response**: `ResponseApi<UserEntity>` - The `UserEntity` object for the requested user entity, wrapped in a `ResponseApi` object.
-
-### Create User Entity
-**Route**: `POST /user-entity/create`
-**Description**: Creates a new user entity.
-**Request Body**: `CreateAndUpdateUserEntityDto` - DTO containing the data for the new user entity.
-**Response**: `ResponseApi<UserEntity>` - The created `UserEntity` object wrapped in a `ResponseApi` object.
-
-### Update User Entity
-**Route**: `PATCH /user-entity/update/:id`
-**Description**: Updates an existing user entity.
-**Path Parameters**: `id` - The ID of the user entity to update.
-**Request Body**: `CreateAndUpdateUserEntityDto` - DTO containing the updated data for the user entity.
-**Response**: `ResponseApi<UserEntity>` - The updated `UserEntity` object wrapped in a `ResponseApi` object.
-
-### Delete User Entity
-**Route**: `DELETE /user-entity/delete/:id`
-**Description**: Deletes an existing user entity.
-**Path Parameters**: `id` - The ID of the user entity to delete.
-**Response**: `ResponseApi<UserEntity>` - The deleted `UserEntity` object wrapped in a `ResponseApi` object.
-
-
-
-## Installations
+## Installation
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Project setup
-
-```bash
-$ npm install
-```
-
-## Compile and run the project
+## Compilation et exécution
 
 ```bash
 # development
@@ -249,7 +177,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Run tests
+## Tests
 
 ```bash
 # unit tests
@@ -262,11 +190,11 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Deployment
+## Déploiement
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+Lorsque vous serez prêt à déployer votre application NestJS en production, il existe quelques étapes clés à suivre pour vous assurer qu'elle fonctionne de manière aussi efficace que possible. Consultez la [documentation sur le déploiement](https://docs.nestjs.com/deployment) pour plus d'informations.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Si vous recherchez une plateforme cloud pour déployer votre application NestJS, découvrez [Mau](https://mau.nestjs.com), notre plateforme officielle pour déployer des applications NestJS sur AWS. Mau rend le déploiement simple et rapide, ne nécessitant que quelques étapes simples :
 
 ```bash
 $ npm install -g mau
