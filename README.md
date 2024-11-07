@@ -106,7 +106,7 @@
 
 
 
-# User#-Entity API - Endpoints
+## UserEntity API - Endpoints
 
 ### Get All User Entities
 **Route**: `GET /user-entity`
