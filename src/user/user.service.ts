@@ -55,6 +55,7 @@ export class UserService {
         let user = new User();
         user = { ...user, ...userDto };
         user.createdAt = new Date();
+        user.lastLogin = new Date();
         const newUser = await this.userRepository.save(user);
         const responseData = this.mapToUserResponseDto(newUser);
         return new ResponseApi(
