@@ -2,13 +2,16 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
+Vous pouvez importer la collection Postman avec le fichier [`NEST API TEST.postman_collection.json`](./NEST%20API%20TEST.postman_collection.json) pour effectuer les tests.
+
+
 ## Résumé User API
 GET
 https://nest-api-test-4gx5.onrender.com/user
-
+---
 GET
 https://nest-api-test-4gx5.onrender.com/user/:id
-
+---
 POST
 https://nest-api-test-4gx5.onrender.com/user/create
 ##### Data structure
@@ -19,10 +22,10 @@ https://nest-api-test-4gx5.onrender.com/user/create
     "email": "mail@mail.com",
     "password": "secret"
 }
-
+---
 DELETE
 https://nest-api-test-4gx5.onrender.com/user/delete/:id
-
+---
 PUT
 https://nest-api-test-4gx5.onrender.com/user/update-all-fields/:id
 ##### Data structure
@@ -33,21 +36,22 @@ https://nest-api-test-4gx5.onrender.com/user/update-all-fields/:id
 	"email": "add@add.com",
 	"password": "pass"
 }
-
+---
 PATCH
 https://nest-api-test-4gx5.onrender.com/user/update/:id
 ##### Data structure
 {
 	"name": "Name updated"
 }
+---
 
 ## Résumé Entity API
 GET
 https://nest-api-test-4gx5.onrender.com/entity
-
+---
 GET
 https://nest-api-test-4gx5.onrender.com/entity/:id
-
+---
 POST
 https://nest-api-test-4gx5.onrender.com/entity/create
 ##### Data structure
@@ -58,7 +62,7 @@ https://nest-api-test-4gx5.onrender.com/entity/create
     "keyLicence": "6K5ZEA",
     "website": "web.com"
 }
-
+---
 PUT
 https://nest-api-test-4gx5.onrender.com/entity/update-all-fields/:id
 ##### Data structure
@@ -68,24 +72,25 @@ https://nest-api-test-4gx5.onrender.com/entity/update-all-fields/:id
 	"siret": "Add your ",
 	"keyLicence": "add@add.com"
 }
-
+---
 PATCH
 https://nest-api-test-4gx5.onrender.com/entity/update/:id
 ##### Data structure
 {
 	"name": "Name updated"
 }
+---
 
 ## Résumé UserEntity API
 GET
 https://nest-api-test-4gx5.onrender.com/user-entity
-
+---
 GET
 https://nest-api-test-4gx5.onrender.com/user-entity/:id
-
+---
 DELETE
 https://nest-api-test-4gx5.onrender.com/user-entity/delete/:id
-
+---
 POST
 https://nest-api-test-4gx5.onrender.com/user-entity/create
 ##### Data structure
@@ -93,7 +98,7 @@ https://nest-api-test-4gx5.onrender.com/user-entity/create
     "userId": 1,
     "entityId": 1
 }
-
+---
 PATCH
 https://nest-api-test-4gx5.onrender.com/user-entity/update/:id
 ##### Data structure
