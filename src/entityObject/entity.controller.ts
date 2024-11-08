@@ -27,20 +27,20 @@ export class EntityController {
 
     // Update an existing entity
     @Patch('update/:id')
-    async update(@Param('id') id: number, @Body() entity: UpdateEntityObjectDto): Promise<ResponseApi<EntityObject>> {
+    async update(@Param('id', ParseIntPipe) id: number, @Body() entity: UpdateEntityObjectDto): Promise<ResponseApi<EntityObject>> {
         return this.entityService.updateEntity(id, entity);
     }
 
     // Update all fields in an existing entity
     @Put('update-all-fields/:id')
-    async updateAllFields(@Param('id') id: number, @Body() entity: UpdateEntityObjectDto): Promise<ResponseApi<EntityObject>> {
+    async updateAllFields(@Param('id', ParseIntPipe) id: number, @Body() entity: UpdateEntityObjectDto): Promise<ResponseApi<EntityObject>> {
         return this.entityService.updateEntity(id, entity);
     }
 
     // Remove an existing entity
     // We can use soft but now just delete physically
     @Delete('delete/:id')
-    async remove(@Param('id') id: number): Promise<ResponseApi<EntityObject>> {
+    async remove(@Param('id', ParseIntPipe) id: number): Promise<ResponseApi<EntityObject>> {
         return await this.entityService.removeEntity(id);
     }
 

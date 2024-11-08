@@ -28,19 +28,19 @@ export class UserController {
 
     // Update an existing user each field
     @Patch('update/:id')
-    async update(@Param('id') id: number, @Body() user: UpdateUserDto): Promise<ResponseApi<User>> {
+    async update(@Param('id', ParseIntPipe) id: number, @Body() user: UpdateUserDto): Promise<ResponseApi<User>> {
         return this.userService.updateUser(id, user);
     }
 
     // Update an existing user all fields
     @Put('update-all-fields/:id')
-    async updateAll(@Param('id') id: number, @Body() user: UpdateAllFieldUserDto): Promise<ResponseApi<User>> {
+    async updateAll(@Param('id', ParseIntPipe) id: number, @Body() user: UpdateAllFieldUserDto): Promise<ResponseApi<User>> {
         return this.userService.updateUserAllField(id, user);
     }
 
     // Remove an existing user
     @Delete('delete/:id')
-    async remove(@Param('id') id: number): Promise<ResponseApi<User>> {
+    async remove(@Param('id', ParseIntPipe) id: number): Promise<ResponseApi<User>> {
         return await this.userService.removeUser(id);
     }
 

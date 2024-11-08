@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
 import { UserEntityService } from './user-entity.service';
 import { UserEntity } from './entity/user_entityObject.entity';
 import { CreateAndUpdateUserEntityDto } from './dto/create-user-entity.dto';
@@ -18,7 +18,7 @@ export class UserEntityController {
 
     // Find one user entity by id
     @Get(':id')
-    async findOneUserEntity(@Param('id') id: number) {
+    async findOneUserEntity(@Param('id', ParseIntPipe) id: number) {
         return this.userEntityService.findOneUserEntity(id);
     }
 
@@ -33,7 +33,7 @@ export class UserEntityController {
     // Update a user entity by id
     @Patch('update/:id')
     async updateUserEntity(
-        @Param('id', ) id: number,
+        @Param('id', ParseIntPipe) id: number,
         @Body() userEntityDto: CreateAndUpdateUserEntityDto
     ) {
         return this.userEntityService.updateUserEntity(id, userEntityDto);
@@ -42,7 +42,7 @@ export class UserEntityController {
     // Delete a user entity by id
     @Delete('delete/:id')
     async deleteUserEntity(
-        @Param('id') id: number
+        @Param('id', ParseIntPipe) id: number
     ) {
         return this.userEntityService.deleteUserEntity(id);
     }
